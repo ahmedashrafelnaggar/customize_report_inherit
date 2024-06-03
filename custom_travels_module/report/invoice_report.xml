@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="internal_layout1">
+		<!-- header -->
+		<div class="header">
+		</div>
+
+		<!-- body -->
+		<t t-if="not o" t-set="o" t-value="doc"/>
+			<t t-if="not company">
+			<t t-if="company_id">
+				<t t-set="company" t-value="company_id"/>
+			</t>
+			<t t-elif="o and 'company_id' in o">
+				<t t-set="company" t-value="o.company_id.sudo()"/>
+			</t>
+			<t t-else="else">
+				<t t-set="company" t-value="res_company"/>
+			</t>
+		</t>
+		<div class="article" style="" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+			<t t-raw="0"/>
+		</div>
+	</template>
+
+	<template id="report_world_agency_body">
+		<div class="page" style="font-size: 16px;font-family:Metropolis-Regular;page-break-after:always !important;">
+			<img src="/custom_travels_module/static/src/img/layout1.jpeg" 
+			style="width: 100%;z-index: -999;position: absolute;height: 1053px;left: 0;"/>
+			<div class="main" style="width: 100%;z-index: 1000;height: 920px;">
+				<div style="height: 210px;"></div>
+				<div t-if="from_date" style="font-weight: bold;margin-bottom: 0px !important;">
+					<span> <t t-esc="from_date"  t-options="{'widget': 'date', 'format': 'MMM, YYYY'}"/> : Invoice </span>
+					<span style="float: right;text-align: right;font-size: 11px;"> 
+						<span> <t t-esc="vat"/> : VAT </span><br/>
+						<span> <t t-esc="tax"/> : Tax ID </span>
+					</span>
+				</div>
+				<p style="margin-top: -10px;text-align: center;font-weight: bold;margin-bottom: 0px !important;">
+					<span t-esc="move_no" style="margin-left: 100px;"/><br/>
+					<span style="font-size: 11px;"><t t-esc="count_page"/> / <t t-esc="last_page"/> : Page</span>
+				</p>
+				<!-- <p style="text-align: center;font-weight: bold;">حركة التأشيرات </p> -->
+				<table style="width: 100%;z-index: 1000 !important;">
+					<tr style="color: #000;border-bottom: 1px solid #000;line-height: 1;font-size: 12px;font-weight: bold;background: #e7e8eb;height: 40px;vertical-align: middle;">
+						<td class="grey_class" style="width: 13%;text-align: center;padding: 5px 0px;">Total</td>
+						<td class="grey_class" style="width: 5%;text-align: center;padding: 5px 0px;">Price</td>
+						<td class="grey_class" style="width: 8%;text-align: center;padding: 5px 0px;">Count of Persons</td>
+						<td class="grey_class" style="width: 10%;text-align: center;padding: 5px 0px;">Flight</td>
+						<td class="grey_class" style="width: 8%;text-align: center;padding: 5px 0px;">ARR OR DEP</td>
+						<td class="grey_class" style="width: 8%;text-align: center;padding: 5px 0px;">Nationality</td>
+						<td class="grey_class" style="width: 21%;text-align: center;padding: 5px 0px;">Name of Person</td>
+						<td class="grey_class" style="width: 15%;text-align: center;padding: 5px 0px;">Vessel</td>
+						<td class="grey_class" style="width: 9%;text-align: center;padding: 5px 0px;">Date</td>
+					</tr>
+					<tr t-foreach="line" t-as="l" style="height: 25px;line-height: 1.5;font-size: 11px;color: #000;border-bottom: 1px solid #000;background:rgb(255, 255, 255, 80%) !important;vertical-align: middle;">
+						<td class="grey_class" style="width: 13%;text-align: center;"><t t-esc="l.price * l.pcr"/></td>
+						<td class="grey_class" style="width: 8%;text-align: center;"><t t-esc="l.price"/></td>
+						<td class="grey_class" style="width: 5%;text-align: center;"><t t-esc="l.pcr"/></td>
+						<td class="grey_class" style="width: 10%;text-align: center;"><t t-esc="l.flight_no"/></td>
+						<td class="grey_class" style="width: 8%;text-align: center;"><t t-if="l.travel_type == 'arr'">ARR</t><t t-else="">DEP</t></td>
+						<!-- <td class="grey_class" style="width: 8%;text-align: center;"><t t-if="l.vessel_nationality" t-esc="l.vessel_nationality.name"/></td> -->
+						<td class="grey_class" style="width: 8%;text-align: center;"><t t-esc="l.vessel_nationality.name"/></td>
+						<td class="grey_class" style="width: 21%;text-align: center;line-height: 1.5 !important;"><t t-esc="l.vessel_name"/></td>
+						<!-- <td class="grey_class" style="width: 10%;text-align: center;line-height: 1.5 !important;"><t t-esc="l.vessel_id"/></td> -->
+						<td class="grey_class" style="width: 8%;text-align: center;"><t t-esc="l.return_date"/></td>
+						<td class="grey_class" style="width: 8%;text-align: center;"><t t-esc="l.travel_date"/></td>
+					</tr>
+					<t t-if="count_page == last_page">
+						<tr style="height: 25px;line-height: 1.5;font-size: 11px;color: #000;border-bottom: 1px solid #000;background:rgb(255, 255, 255, 80%) !important;vertical-align: middle;">
+							<td class="grey_class" style="width: 13%;text-align: center;"><t t-esc="a_total"/></td>
+							<td class="grey_class" colspan="3"  style="width: 5%;text-align: center;">Total Additional Items</td>
+							<td class="grey_class" colspan="5" style="width: 8%;text-align: center;"></td>
+						</tr>
+						<tr style="height: 25px;line-height: 1.5;font-size: 11px;color: #000;border-bottom: 1px solid #000;background:rgb(255, 255, 255, 80%) !important;vertical-align: middle;">
+							<td class="grey_class" style="width: 13%;text-align: center;"><t t-esc="m_total"/></td>
+							<td class="grey_class" colspan="3"  style="width: 5%;text-align: center;">Total Meet &amp; Assist</td>
+							<td class="grey_class" colspan="5" style="width: 8%;text-align: center;"></td>
+						</tr>
+						<tr style="height: 25px;line-height: 1.5;font-size: 11px;color: #000;border-bottom: 1px solid #000;background:rgb(255, 255, 255, 80%) !important;vertical-align: middle;">
+							<td class="grey_class" style="width: 13%;text-align: center;"><t t-esc="g_total"/></td>
+							<td class="grey_class" colspan="3"  style="width: 5%;text-align: center;">Grand Total</td>
+							<td class="grey_class" colspan="5" style="width: 8%;text-align: center;"></td>
+						</tr>
+						<tr style="height: 25px;line-height: 1.5;font-size: 11px;color: #000;border-bottom: 1px solid #000;background:rgb(255, 255, 255, 80%) !important;vertical-align: middle;">
+							<td class="grey_class" style="width: 13%;text-align: center;"><t t-esc="v_total"/></td>
+							<td class="grey_class" colspan="3"  style="width: 5%;text-align: center;">VAT</td>
+							<td class="grey_class" colspan="5" style="width: 8%;text-align: center;"></td>
+						</tr>
+						<tr style="height: 25px;line-height: 1.5;font-size: 11px;color: #000;border-bottom: 1px solid #000;background:rgb(255, 255, 255, 80%) !important;vertical-align: middle;">
+							<td class="grey_class" style="width: 13%;text-align: center;"><t t-esc="gr_total"/></td>
+							<td class="grey_class" colspan="3"  style="width: 5%;text-align: center;">GROSS TOTAL</td>
+							<td class="grey_class" colspan="5" style="width: 8%;text-align: center;"></td>
+						</tr>
+					</t>
+				</table>
+			</div>
+		</div>
+	</template>
+
+	<template id="report_world_agency_document">
+		<t t-call="custom_travels_module.internal_layout1">
+			<t t-set="company" t-value="res_company" />
+			<style type="text/css">
+				    	table,tr,td {
+				    		border:1px solid;
+				    	}
+			</style>
+			<t t-if="docs">
+				<t t-set="separte_record" t-value="[list(docs)[i * 20:(i + 1) * 20] for i in range((len(list(docs)) + 20 - 1) // 20 )]"/>
+				<t t-set='last_page' t-value="len(separte_record)"/>
+				<t t-set='last_page' t-value="len(separte_record)"/>
+				<t t-set='count_page' t-value="1"/>
+				<t t-foreach="separte_record" t-as="line">
+					<t t-call="custom_travels_module.report_world_agency_body"/>
+					<t t-set='count_page' t-value="count_page+1"/>
+				</t>
+			</t>
+			<t t-else="">
+				<div class="page" style="font-size: 16px;font-family:Metropolis-Regular;page-break-after:always !important;">
+					<img src="/custom_travels_module/static/src/img/layout1.jpeg" 
+					style="width: 100%;z-index: -999;position: absolute;height: 1053px;left: 0;"/>
+					<div class="main" style="width: 100%;z-index: 1000;height: 920px;">
+						<div style="height: 220px;"></div>
+						<p t-if="from_date" style="font-weight: bold;">
+							Invoice  : <t t-esc="from_date"  t-options="{'widget': 'date', 'format': 'MMM, YYYY'}"/>
+						</p>
+						<p style="text-align: center;font-weight: bold;">حركة التأشيرات </p>
+						<table style="width: 100%;z-index: 1000 !important;">
+							<tr style="color: #000;border-bottom: 1px solid #000;line-height: 1;font-size: 12px;font-weight: bold;background: #e7e8eb;height: 40px;vertical-align: middle;">
+								<td class="grey_class" style="width: 9%;text-align: center;padding: 5px 0px;">Date</td>
+								<td class="grey_class" style="width: 15%;text-align: center;padding: 5px 0px;">Vessel</td>
+								<td class="grey_class" style="width: 21%;text-align: center;padding: 5px 0px;">Name of Person</td>
+								<td class="grey_class" style="width: 8%;text-align: center;padding: 5px 0px;">Nationality</td>
+								<td class="grey_class" style="width: 8%;text-align: center;padding: 5px 0px;">ARR OR DEP</td>
+								<td class="grey_class" style="width: 10%;text-align: center;padding: 5px 0px;">Flight</td>
+								<td class="grey_class" style="width: 8%;text-align: center;padding: 5px 0px;">Count of Persons</td>
+								<td class="grey_class" style="width: 5%;text-align: center;padding: 5px 0px;">Price</td>
+								<td class="grey_class" style="width: 13%;text-align: center;padding: 5px 0px;">Total</td>
+							</tr>
+							<tr style="height: 25px;line-height: 1.5;font-size: 11px;color: #000;border-bottom: 1px solid #000;background:rgb(255, 255, 255, 80%) !important;vertical-align: middle;">
+								<td colspan="9" class="grey_class" style="width: 8%;text-align: center;"> Data Not Found</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</t>
+		</t>
+	</template>
+	
+	<template id="report_world_agency">
+		<t t-call="web.html_container">
+			<t t-call="custom_travels_module.report_world_agency_document"/>
+		</t>
+	</template>
+</odoo>

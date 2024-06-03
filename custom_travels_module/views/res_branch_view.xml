@@ -1,0 +1,23 @@
+<odoo>
+	
+	<!-- Tree View For Branch -->
+	<record id="tree_res_branch_view" model="ir.ui.view">
+		<field name="name">res.branch.tree</field>
+		<field name="model">res.branch</field>
+		<field name="arch" type="xml">
+			<tree string="Branches" editable="bottom">
+				<field name="name" required="1"/>
+			</tree>
+		</field>
+	</record>
+	
+	<!-- Action For Branch -->
+	<record id="action_branch_branch" model="ir.actions.act_window">
+		<field name="name">Branches</field>
+		<field name="res_model">res.branch</field>
+		<field name="view_mode">tree</field>
+	</record>
+
+	<!-- Menu Item For Branch -->
+	<menuitem id="branch_submenu" name="Branch" parent="custom_travels_module.config_submenu" action="action_branch_branch" sequence="2" groups="custom_travels_module.group_branch_manager"/>
+</odoo>

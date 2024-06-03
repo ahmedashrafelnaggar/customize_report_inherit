@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_travels_data,travels.data,model_travels_data,base.group_user,1,1,1,1
+access_travels_shift,travels.shift,model_travels_shift,base.group_user,1,1,1,1
+access_price_categories,price.categories,model_price_categories,base.group_user,1,1,1,1
+access_service_service,service.service,model_service_service,base.group_user,1,1,1,1
+access_travels_invoicing_report,travels.invoicing.report,model_travels_invoicing_report,,1,1,1,1
+access_res_branch,access_res_branch,model_res_branch,,1,1,1,1
+access_travels_report,travels.report,model_travels_report,,1,1,1,1
+access_room_group,access_room_group,model_room_group,,1,1,1,1
+access_room_type,access_room_type,model_room_type,,1,1,1,1
+access_ticket_report,access_ticket_report,model_ticket_report,,1,1,1,1

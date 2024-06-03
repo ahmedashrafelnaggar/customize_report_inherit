@@ -1,0 +1,36 @@
+<odoo>
+
+	<!-- Add New Page in Partner View -->
+	<record id="base_view_partner_form_inherit" model="ir.ui.view">
+		<field name="name">res.partner.inherit</field>
+		<field name="model">res.partner</field>
+		<field name="inherit_id" ref="base.view_partner_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//notebook" position="inside">
+				<page string="Price Categories" name="price_categories">
+					<field name="price_categories_line">
+						<tree editable="bottom">
+							<field name="categ_no" required="1" ptional="show"/>
+							<field name="service_id" required="1"/>
+							<field name="travel_type" required="1"/>
+							<field name="greater_than_number" required="1"/>
+							<field name="number" required="1"/>
+							<field name="price"/>
+							<field name="country_ids" widget="many2many_tags" optional="hide"/>
+							<field name="special_price" required="1"/>
+							<field name="active_inactive" required="1" />
+							<field name="account_id" required="1" domain="[('internal_type','not in',['receivable','payable'])]"/>
+							<field name="analytic_account_id" required="0"/>
+						</tree>
+					</field>
+				</page>
+			</xpath>
+			<xpath expr="//field[@name='vat']" position="after">
+				<field name="vat_no"/>
+				<field name="currency_custody" widget="monetary"/>
+				<field name="custody_account_id"/>
+			</xpath>
+		</field>
+	</record>
+
+</odoo>

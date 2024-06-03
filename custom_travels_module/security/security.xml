@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="0">
+
+		<record id="group_branch_manager" model="res.groups">
+			<field name="name">Branch Manager</field>
+		</record>
+
+		<record id="rule_branch_travels_data" model="ir.rule">
+			<field name="name">Branch : Travels Data</field>
+			<field name="model_id" ref="model_travels_data"/>
+			<field name="global" eval="True"/>
+			<field name="domain_force">['|',('branch_id','in',user.branch_ids.ids),('branch_id','=',False)]</field>
+		</record>
+
+	</data>
+</odoo>

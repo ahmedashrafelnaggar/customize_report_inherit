@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<!-- form view -->
+	<record id="form_travels_invoicing_report_view" model="ir.ui.view">
+		<field name="name">travels.invoicing.report.form</field>
+        <field name="model">travels.invoicing.report</field>
+		<field name="arch" type="xml">
+			<form string="Travels Invoicing Report">
+				<group>
+					<group>
+						<field name="type" widget="radio" options="{'horizontal': true}"/>
+					</group>
+					<group>
+						<field name="branch_ids" widget="many2many_tags"/>
+					</group>
+				</group>
+				<group>
+					<group>
+						<field name="from_date" required="1"/>
+						<field name="c_o" attrs="{'required': [('type', '=', 'visa')]}"/>
+					</group>
+					<group>
+						<field name="to_date" required="1"/>
+						<field name="move_id" 
+							attrs="{'invisible': [('type', '!=', 'invoice')],
+							'required': [('type', '=', 'invoice')]}"
+							/>
+					</group>
+				</group>
+				<footer>
+					<button name="action_to_inv_report" type="object" string="Invoice Print" class="oe_highlight" attrs="{'invisible': [('type', '!=', 'invoice')]}"/>
+					<button name="action_to_vis_report" type="object" string="Visa Print" class="oe_highlight" attrs="{'invisible': [('type', '!=', 'visa')]}"/>
+					<button name="action_to_pcr_report" type="object" string="PCR Print" class="oe_highlight" attrs="{'invisible': [('type', '!=', 'pcr')]}"/>
+					<button special="cancel" type="object" string="Cancel" />
+				</footer>
+			</form>
+		</field>
+	</record>
+	
+	<!-- actions view -->
+	<record id="action_travels_invoicing_report_wizard" model="ir.actions.act_window">
+		<field name="name">Travels Report</field>
+		<field name="res_model">travels.invoicing.report</field>
+		<field name="view_mode">form</field>
+		<field name="view_id" ref="form_travels_invoicing_report_view" />
+		<field name="target">new</field>
+	</record>
+	
+</odoo>

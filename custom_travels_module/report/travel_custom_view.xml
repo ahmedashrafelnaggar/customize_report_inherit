@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<template id="internal_layout2">
+		<!-- body -->
+		<t t-if="not o" t-set="o" t-value="doc"/>
+			<t t-if="not company">
+			<t t-if="company_id">
+				<t t-set="company" t-value="company_id"/>
+			</t>
+			<t t-elif="o and 'company_id' in o">
+				<t t-set="company" t-value="o.company_id.sudo()"/>
+			</t>
+			<t t-else="else">
+				<t t-set="company" t-value="res_company"/>
+			</t>
+		</t>
+
+		<!-- header -->
+		<div class="header">
+			<div class="row">
+				<div class="col-6">
+					
+				</div>
+				<div class="col-6">
+					<img t-if="company_id.logo" t-att-src="image_data_uri(company_id.logo)" style="max-height: 65px;" alt="Logo"/>
+				</div>
+			</div>
+		</div>
+
+		<div class="article" style="" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id" t-att-data-oe-lang="o and o.env.context.get('lang')">
+			<t t-raw="0"/>
+		</div>
+	</template>
+
+	<template id="report_travel_document">
+		<t t-call="custom_travels_module.internal_layout2">
+			<t t-set="company" t-value="res_company" />
+			<style type="text/css">
+				    	table,tr,td {
+				    		border:1px solid;
+				    	}
+			</style>
+				<div class="page" style="font-size: 16px;font-family:Metropolis-Regular;page-break-after:always !important;">
+					<div class="main">
+						<!-- <div style="height: 220px;"></div> -->
+						<p style="text-align: center;font-weight: bold;">تقرير اسم العميل </p>
+						<table style="width: 100%;z-index: 1000 !important;">
+							<tr style="color: #000;border-bottom: 1px solid #000;line-height: 1;font-size: 12px;font-weight: bold;background: #e7e8eb;height: 40px;vertical-align: middle;">
+								<td class="grey_class" style="width: 9%;text-align: center;padding: 5px 0px;">نوع الغرفة</td>
+								<td class="grey_class" style="width: 9%;text-align: center;padding: 5px 0px;">البرنامج</td>
+								<td class="grey_class" style="width: 13%;text-align: center;padding: 5px 0px;">تاريخ العودة</td>
+								<td class="grey_class" style="width: 8%;text-align: center;padding: 5px 0px;">تاريخ الذهاب</td>
+								<td class="grey_class" style="width: 10%;text-align: center;padding: 5px 0px;">الرحلة</td>
+								<td class="grey_class" style="width: 8%;text-align: center;padding: 5px 0px;">الجوال</td>
+								<td class="grey_class" style="width: 10%;text-align: center;padding: 5px 0px;">هوية الراكب</td>
+								<td class="grey_class" style="width: 10%;text-align: center;padding: 5px 0px;">الجنسية</td>
+								<td class="grey_class" style="width: 9%;text-align: center;padding: 5px 0px;">اسم الراكب</td>
+								<td class="grey_class" style="width: 9%;text-align: center;padding: 5px 0px;">رقم التذكرة</td>
+								<td class="grey_class" style="width: 5%;text-align: center;padding: 5px 0px;">رقم</td>
+							</tr>
+							<t t-set="no" t-value="1" />
+							<tr t-foreach="docs" t-as="l" style="height: 25px;line-height: 1.5;font-size: 11px;color: #000;border-bottom: 1px solid #000;background:rgb(255, 255, 255, 80%) !important;vertical-align: middle;">
+								<td class="grey_class" style="text-align: center;">
+									<t t-if="l.room_type_id" t-esc="l.room_type_id.name"/>
+								</td>
+								<td class="grey_class" style="text-align: center;line-height: 1.5 !important;">
+									<t t-if="l.shift_1" t-esc="l.shift_1.name"/>
+								</td>
+								<td class="grey_class" style="text-align: center;">
+									<t t-esc="l.return_date"/>
+									<br/>
+									<t t-esc="l.hjrj_y_to"/> / <t t-esc="l.hjrj_m_to"/> / <t t-esc="l.hjrj_d_to"/>
+								</td>
+								<td class="grey_class" style="text-align: center;line-height: 1.5 !important;">
+									<t t-esc="l.travel_date"/>
+									<br/>
+									<t t-esc="l.hjrj_y_from"/> / <t t-esc="l.hjrj_m_from"/> / <t t-esc="l.hjrj_d_from"/>
+								</td>
+								<td class="grey_class" style="text-align: center;">
+									<t t-if="l.service_id" t-esc="l.service_id.name"/>
+								</td>
+								<td class="grey_class" style="text-align: center;">
+									<t t-esc="l.mobile_no"/>
+								</td>
+								<td class="grey_class" style="text-align: center;">
+									<t t-esc="l.customer_id"/>
+								</td>
+								<td class="grey_class" style="text-align: center;">
+									<t t-if="l.vessel_nationality" t-esc="l.vessel_nationality.name"/> 
+								</td>
+								<td class="grey_class" style="text-align: center;">
+									<t t-esc="l.vessel_name"/> 
+								</td>
+								<td class="grey_class" style="text-align: center;">
+									<t t-esc="l.ticket_number"/>
+								</td>
+								<td class="grey_class" style="text-align: center;">
+									<t t-esc="no"/>
+								</td>
+								<t t-set="no" t-value="no + 1" />
+							</tr>
+						</table>
+					</div>
+				</div>
+		</t>
+	</template>
+	
+	<template id="report_travel">
+		<t t-call="web.html_container">
+			<t t-call="custom_travels_module.report_travel_document"/>
+		</t>
+	</template>
+</odoo>

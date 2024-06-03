@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<!-- form view -->
+	<record id="form_room_group_view" model="ir.ui.view">
+		<field name="name">room.group.form</field>
+        <field name="model">room.group</field>
+		<field name="arch" type="xml">
+			<form string="Travels Report">
+				<group>
+					<group>
+						<field name="from_date" required="1"/>
+						<field name="from_return_date" required="1"/>
+						<field name="filter_by" widget="radio"/>
+					</group>
+					<group>
+						<field name="branch_ids" widget="many2many_tags"/>
+						<!-- <field name="branch_id"/> -->
+						<!-- <field name="to_date" required="1"/> -->
+						<!-- <field name="to_return_date" required="1"/> -->
+					</group>
+				</group>
+				<footer>
+					<button name="action_print_report" type="object" string="Print" class="oe_highlight" />
+					<button special="cancel" type="object" string="Cancel" />
+				</footer>
+			</form>
+		</field>
+	</record>
+	
+	<!-- actions view -->
+	<record id="action_room_group_wizard" model="ir.actions.act_window">
+		<field name="name">Housing Report</field>
+		<field name="res_model">room.group</field>
+		<field name="view_mode">form</field>
+		<field name="view_id" ref="form_room_group_view" />
+		<field name="target">new</field>
+	</record>
+	
+</odoo>

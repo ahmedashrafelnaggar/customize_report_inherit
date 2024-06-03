@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="paperformat_traveling_report" model="report.paperformat">
+		<field name="name">Custom Paperformat for the Invoice report</field>
+		<field name="default" eval="False"/>
+		<field name="disable_shrinking" eval="True"/>
+		<field name="format">A4</field>
+		<field name="page_height">0</field>
+		<field name="page_width">0</field>
+		<field name="orientation">Portrait</field>
+		<field name="margin_top">0</field>
+		<field name="header_spacing">0</field>
+		<field name="margin_bottom">0</field>
+		<field name="margin_left">0</field>
+		<field name="margin_right">0</field>
+		<field name="dpi">90</field>
+	</record>
+
+	<record id="paperformat_traveling_custom_report" model="report.paperformat">
+		<field name="name">Custom Paperformat for the Travel report</field>
+		<field name="default" eval="True"/>
+		<field name="format">A4</field>
+		<field name="orientation">Landscape</field>
+		<field name="margin_top">35</field>
+		<field name="margin_bottom">10</field>
+		<field name="margin_left">5</field>
+		<field name="margin_right">5</field>
+		<field name="header_line" eval="False"/>
+		<field name="header_spacing">30</field>
+		<field name="disable_shrinking" eval="True"/>
+		<field name="dpi">96</field>
+	</record>
+
+	<record id="traveling_custom_report_menu" model="ir.actions.report">
+		<field name="name">Customer Report</field>
+		<field name="model">travels.data</field>
+		<field name="report_type">qweb-pdf</field>
+		<field name="report_name">custom_travels_module.report_travel</field>
+		<field name="report_file">custom_travels_module.report_travel</field>
+		<field name="binding_model_id" eval="False"/>
+		<field name="binding_type">report</field>
+		<field name="paperformat_id" ref="custom_travels_module.paperformat_traveling_custom_report"/>
+	</record>
+
+	<record id="traveling_report_room_group" model="ir.actions.report">
+		<field name="name">Housing Report</field>
+		<field name="model">travels.data</field>
+		<field name="report_type">qweb-pdf</field>
+		<field name="report_name">custom_travels_module.report_room_group_template</field>
+		<field name="report_file">custom_travels_module.report_room_group_template</field>
+		<field name="binding_model_id" eval="False"/>
+		<field name="binding_type">report</field>
+		<field name="paperformat_id" ref="custom_travels_module.paperformat_traveling_custom_report"/>
+	</record>
+
+	<record id="ticket_report_room_group" model="ir.actions.report">
+		<field name="name">Ticket Report</field>
+		<field name="model">travels.data</field>
+		<field name="report_type">qweb-pdf</field>
+		<field name="report_name">custom_travels_module.report_ticket_template</field>
+		<field name="report_file">custom_travels_module.report_ticket_template</field>
+		<field name="binding_model_id" eval="False"/>
+		<field name="binding_type">report</field>
+		<field name="paperformat_id" ref="custom_travels_module.paperformat_traveling_custom_report"/>
+	</record>
+
+	<record id="travel_report_menu" model="ir.actions.report">
+		<field name="name">Travel Report</field>
+		<field name="model">travels.data</field>
+		<field name="report_type">qweb-html</field>
+		<field name="report_name">custom_travels_module.report_travel_template</field>
+		<field name="report_file">custom_travels_module.report_travel_template</field>
+		<field name="binding_model_id" ref="custom_travels_module.model_travels_data"/>
+		<field name="binding_type">report</field>
+		<field name="paperformat_id" ref="custom_travels_module.paperformat_traveling_report"/>
+	</record>
+
+	<!-- report menu in print button -->
+	<record id="traveling_report_menu" model="ir.actions.report">
+		<field name="name">Travels Invoice Report</field>
+		<field name="model">travels.data</field>
+		<field name="report_type">qweb-pdf</field>
+		<field name="report_name">custom_travels_module.report_world_agency</field>
+		<field name="report_file">custom_travels_module.report_world_agency</field>
+		<field name="binding_model_id" eval="False"/>
+		<field name="binding_type">report</field>
+		<field name="paperformat_id" ref="custom_travels_module.paperformat_traveling_report"/>
+	</record>
+
+
+	<!-- report menu in print button -->
+	<record id="traveling_visa_report_menu" model="ir.actions.report">
+		<field name="name">Travels Visa Report</field>
+		<field name="model">travels.data</field>
+		<field name="report_type">qweb-pdf</field>
+		<field name="report_name">custom_travels_module.report_world_agency_visa</field>
+		<field name="report_file">custom_travels_module.report_world_agency_visa</field>
+		<field name="binding_model_id" eval="False"/>
+		<field name="binding_type">report</field>
+		<field name="paperformat_id" ref="custom_travels_module.paperformat_traveling_report"/>
+	</record>
+
+
+	 <!-- report menu in print button -->
+	<record id="traveling_pcr_report_menu" model="ir.actions.report">
+		<field name="name">Travels PCR Report</field>
+		<field name="model">travels.data</field>
+		<field name="report_type">qweb-pdf</field>
+		<field name="report_name">custom_travels_module.report_world_agency_pcr</field>
+		<field name="report_file">custom_travels_module.report_world_agency_pcr</field>
+		<field name="binding_model_id" eval="False"/>
+		<field name="binding_type">report</field>
+		<field name="paperformat_id" ref="custom_travels_module.paperformat_traveling_report"/>
+	</record>
+
+</odoo>

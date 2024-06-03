@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<template id="report_world_agency_visa_body">
+		<div class="page" style="font-size: 16px;font-family:Metropolis-Regular;page-break-after:always !important;">
+			<img src="/custom_travels_module/static/src/img/layout1.jpeg" 
+			style="width: 100%;z-index: -999;position: absolute;height: 1053px;left: 0;"/>
+			<div class="main" style="width: 100%;z-index: 1000;height: 920px;">
+				<div style="height: 220px;"></div>
+				<p style="font-weight: bold;margin-bottom: 0px;">
+					Visa : <t t-esc="from_date"/> To <t t-esc="to_date"/> 
+				</p>
+				<p style="text-align: center;font-weight: bold;">حركة التأشيرات </p>
+				<table style="width: 100%;z-index: 1000 !important;">
+					<tr style="color: #000;border-bottom: 1px solid #000;line-height: 1;font-size: 12px;font-weight: bold;background: #e7e8eb;height: 40px;vertical-align: middle;">
+						<td class="grey_class" style="width: 9%;text-align: center;padding: 5px 0px;">Date</td>
+						<td class="grey_class" style="width: 11%;text-align: center;padding: 5px 0px;">Vessel Name</td>
+						<td class="grey_class" style="width: 8%;text-align: center;padding: 5px 0px;">Description</td>
+						<td class="grey_class" style="width: 15%;text-align: center;padding: 5px 0px;">Name of Person</td>
+						<td class="grey_class" style="width: 8%;text-align: center;padding: 5px 0px;">ARR OR DEP</td>
+						<td class="grey_class" style="width: 10%;text-align: center;padding: 5px 0px;">Flight</td>
+						<td class="grey_class" style="width: 8%;text-align: center;padding: 5px 0px;">Count of Persons</td>
+						<td class="grey_class" style="width: 5%;text-align: center;padding: 5px 0px;">وارد</td>
+						<td class="grey_class" style="width: 10%;text-align: center;padding: 5px 0px;">منصرف</td>
+						<td class="grey_class" style="width: 10%;text-align: center;padding: 5px 0px;">رصيد</td>
+					</tr>
+					<tr style="color: #000;border-bottom: 1px solid #000;line-height: 1;font-size: 12px;font-weight: bold;background:rgb(255, 255, 255, 80%) !important;height: 40px;vertical-align: middle;">
+						<td class="grey_class" colspan="7" style="text-align: center;padding: 5px 0px;">Opening Balance </td>
+						<td class="grey_class" style="width: 5%;text-align: center;padding: 5px 0px;"><t t-esc="debit_balance"/></td>
+						<td class="grey_class" style="width: 10%;text-align: center;padding: 5px 0px;"><t t-esc="b_total"/></td>
+						<td class="grey_class" style="width: 10%;text-align: center;padding: 5px 0px;">
+							<t t-esc="debit_balance"/>
+							<t t-set='balance' t-value="balance-b_total"/>
+						</td>
+					</tr>
+					<tr t-foreach="line" t-as="l" style="height: 25px;line-height: 1.5;font-size: 11px;color: #000;border-bottom: 1px solid #000;background:rgb(255, 255, 255, 80%) !important;vertical-align: middle;">
+						<td class="grey_class" style="width: 8%;text-align: center;"><t t-esc="l.travel_date"/></td>
+						<td class="grey_class" style="width: 8%;text-align: center;"><t t-esc="l.hjrj_d_from"/></td>
+						<td class="grey_class" style="width: 8%;text-align: center;"><t t-esc="l.hjrj_d_from"/></td>
+						<td class="grey_class" style="width: 8%;text-align: center;"><t t-esc="l.hjrj_d_from"/></td>
+						<td class="grey_class" style="width: 8%;text-align: center;"><t t-esc="l.hjrj_d_from"/></td>
+						<td class="grey_class" style="width: 11%;text-align: center;line-height: 1.5 !important;"><t t-esc="l.vessel_id"/></td>
+						<td class="grey_class" style="width: 8%;line-height: 1.5 !important;"><t t-esc="l.notes"/></td>
+						<td class="grey_class" style="width: 15%;line-height: 1.5 !important;"><t t-esc="l.vessel_name"/></td>
+						<td class="grey_class" style="width: 8%;text-align: center;"><t t-if="l.travel_type == 'arr'">ARR</t><t t-else="">DEP</t></td>
+						<td class="grey_class" style="width: 10%;text-align: center;"><t t-esc="l.flight_no"/></td>
+						<td class="grey_class" style="width: 5%;text-align: center;"><t t-esc="l.pcr"/></td>
+						<td class="grey_class" style="width: 8%;text-align: center;"> </td>
+						<td class="grey_class" style="width: 10%;text-align: center;">
+							<t t-esc="l.sub_total"/>
+						</td>
+						<td class="grey_class" style="width: 10%;text-align: center;">
+							<t t-esc="abs(abs(balance) - l.sub_total)"/>
+							<t t-set='balance' t-value="abs(balance) - l.sub_total"/>
+							<t t-set='t_balance' t-value="t_balance+l.sub_total"/>
+						</td>
+					</tr>
+					<tr t-if="count_page == last_page" style="height: 25px;line-height: 1.5;font-size: 11px;color: #000;border-bottom: 1px solid #000;background:rgb(255, 255, 255, 80%) !important;vertical-align: middle;">
+						<td class="grey_class" colspan="7" style="width: 8%;text-align: center;"></td>
+						<td class="grey_class" style="width: 12%;text-align: center;line-height: 1.5 !important;">
+							<t t-esc="debit_balance"/>
+						</td>
+						<td class="grey_class" style="width: 10%;text-align: center;padding: 5px 0px;">
+							<t t-esc="t_balance"/>
+						</td>
+						<td class="grey_class" style="width: 10%;text-align: center;">
+							<t t-esc="abs(balance)"/>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</template>
+
+	<template id="report_world_agency_visa_document">
+		<t t-call="custom_travels_module.internal_layout1">
+			<t t-set="company" t-value="res_company" />
+			<style type="text/css">
+				    	table,tr,td {
+				    		border:1px solid;
+				    	}
+			</style>
+			<t t-if="docs">
+				<t t-set="separte_record" t-value="[list(docs)[i * 20:(i + 1) * 20] for i in range((len(list(docs)) + 20 - 1) // 20 )]"/>
+				<t t-set='last_page' t-value="len(separte_record)"/>
+				<t t-set='count_page' t-value="1"/>
+				<t t-set='balance' t-value="debit_balance"/>
+				<t t-set='t_balance' t-value="0.0"/>
+				<t t-foreach="separte_record" t-as="line">
+					<t t-call="custom_travels_module.report_world_agency_visa_body"/>
+					<t t-set='count_page' t-value="count_page+1"/>
+				</t>
+			</t>
+			<t t-else="">
+				<div class="page" style="font-size: 16px;font-family:Metropolis-Regular;page-break-after:always !important;">
+					<img src="/custom_travels_module/static/src/img/layout1.jpeg" 
+					style="width: 100%;z-index: -999;position: absolute;height: 1053px;left: 0;"/>
+					<div class="main" style="width: 100%;z-index: 1000;height: 920px;">
+						<div style="height: 220px;"></div>
+						<p style="font-weight: bold;margin-bottom: 0px;">
+							Visa : <t t-esc="from_date"/> To <t t-esc="to_date"/> 
+						</p>
+						<p style="text-align: center;font-weight: bold;">حركة التأشيرات </p>
+						<table style="width: 100%;z-index: 1000 !important;">
+							<tr style="color: #000;border-bottom: 1px solid #000;line-height: 1;font-size: 12px;font-weight: bold;background: #e7e8eb;height: 40px;vertical-align: middle;">
+								<td class="grey_class" style="width: 9%;text-align: center;padding: 5px 0px;">Date</td>
+								<td class="grey_class" style="width: 11%;text-align: center;padding: 5px 0px;">Vessel Name</td>
+								<td class="grey_class" style="width: 8%;text-align: center;padding: 5px 0px;">Description</td>
+								<td class="grey_class" style="width: 15%;text-align: center;padding: 5px 0px;">Name of Person</td>
+								<td class="grey_class" style="width: 8%;text-align: center;padding: 5px 0px;">ARR OR DEP</td>
+								<td class="grey_class" style="width: 10%;text-align: center;padding: 5px 0px;">Flight</td>
+								<td class="grey_class" style="width: 8%;text-align: center;padding: 5px 0px;">Count of Persons</td>
+								<td class="grey_class" style="width: 5%;text-align: center;padding: 5px 0px;">رصيد</td>
+								<td class="grey_class" style="width: 10%;text-align: center;padding: 5px 0px;">منصرف</td>
+								<td class="grey_class" style="width: 10%;text-align: center;padding: 5px 0px;">وارد</td>
+							</tr>
+							<tr style="height: 25px;line-height: 1.5;font-size: 11px;color: #000;border-bottom: 1px solid #000;background:rgb(255, 255, 255, 80%) !important;vertical-align: middle;">
+								<td colspan="11" class="grey_class" style="width: 8%;text-align: center;"> Data Not Found</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</t>
+		</t>
+	</template>
+
+	<template id="report_world_agency_visa">
+		<t t-call="web.html_container">
+			<t t-call="custom_travels_module.report_world_agency_visa_document"/>
+		</t>
+	</template>
+</odoo>

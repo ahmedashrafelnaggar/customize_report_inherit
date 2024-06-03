@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="report_room_group_template_header">
+		<t t-if="not o" t-set="o" t-value="doc"/>
+		<t t-if="not company">
+			<t t-if="company_id">
+				<t t-set="company" t-value="company_id"/>
+			</t>
+			<t t-elif="o and 'company_id' in o">
+				<t t-set="company" t-value="o.company_id.sudo()"/>
+			</t>
+			<t t-else="else">
+				<t t-set="company" t-value="res_company"/>
+			</t>
+		</t>
+
+		<div class="header">
+			<div class="row">
+				<div class="col-6">
+					
+				</div>
+				<div class="col-6">
+					<img t-if="company_id.logo" t-att-src="image_data_uri(company_id.logo)" style="max-height: 65px;" alt="Logo"/>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer" style="font-size: 13px;">
+		</div>
+
+		<div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
+			 t-att-data-oe-lang="o and 'en_US'">
+			 <!-- t-att-data-oe-lang="o and o.env.context.get('lang')"> -->
+			<t t-raw="0"/>
+		</div>
+
+	</template>
+	<template id="report_room_group_template">
+		<t t-call="web.html_container">
+			<t t-call="custom_travels_module.report_room_group_template_header">
+				<div class="page" style="text-align: center;">
+					<t t-foreach="group_by_records" t-as="group_by_record">
+						<div style="page-break-inside: avoid;">
+							<h3 style="text-decoration: underline;">
+								<t t-esc="group_by_record.name"/>
+							</h3>
+							<t t-foreach="range(0,len(group_by_records[group_by_record])+1,3)" t-as="number" t-if="len(group_by_records[group_by_record]) > 3">
+								<t t-set="first_record" t-value="group_by_records[group_by_record][number] if number &lt; len(group_by_records[group_by_record]) else ''"/>
+								<t t-set="second_number" t-value="number+1"/>
+								<t t-set="second_record" t-value="group_by_records[group_by_record][second_number] if second_number &lt; len(group_by_records[group_by_record]) else ''"/>
+								<t t-set="third_number" t-value="number+2"/>
+								<t t-set="third_record" t-value="group_by_records[group_by_record][third_number] if third_number &lt; len(group_by_records[group_by_record]) else ''"/>
+								<div class="row" style="padding-right: 10px;">
+									<div class="col-4" style="margin: 5px;padding: 0px 0px 5px 0px;border: 1px solid black;" t-if="first_record">
+										<h4 style="margin: 0px;">
+											<div style="width: 100%;border-bottom: 1px solid black;">
+												<t t-esc="first_record['name']"/>
+											</div>
+											<t t-foreach="first_record['records']" t-as="record_1">
+												<div style="width: 100%;border-bottom: 1px solid black;">
+													<t t-esc="record_1.companion_name"/>
+												</div>
+											</t>
+										</h4>
+										<!-- <h4 style="text-decoration: underline;">
+											<t t-if="first_record" t-esc="first_record.companion_name"/>
+										</h4> -->
+									</div>
+									<div class="col-4" style="margin: 5px;padding: 0px 0px 5px 0px;border: 1px solid black;" t-if="second_record">
+										<h4 style="margin: 0px;">
+											<div style="width: 100%;border-bottom: 1px solid black;">
+												<t t-esc="second_record['name']"/>
+											</div>
+											<t t-foreach="second_record['records']" t-as="record_1">
+												<div style="width: 100%;border-bottom: 1px solid black;">
+													<t t-esc="record_1.companion_name"/>
+												</div>
+											</t>
+										</h4>
+										<!-- <h4 style="text-decoration: underline;">
+											<t t-if="second_record" t-esc="second_record.vessel_name"/>
+										</h4>
+										<h4 style="text-decoration: underline;">
+											<t t-if="second_record" t-esc="second_record.companion_name"/>
+										</h4> -->
+									</div>
+									<div class="col-4" style="margin: 5px;padding: 0px 0px 5px 0px;border: 1px solid black;" t-if="third_record">
+										<h4 style="margin: 0px;">
+											<div style="width: 100%;border-bottom: 1px solid black;">
+												<t t-esc="third_record['name']"/>
+											</div>
+											<t t-foreach="third_record['records']" t-as="record_1">
+												<div style="width: 100%;border-bottom: 1px solid black;">
+													<t t-esc="record_1.companion_name"/>
+												</div>
+											</t>
+										</h4>
+										<!-- <h4 style="text-decoration: underline;">
+											<t t-if="third_record" t-esc="third_record.vessel_name"/>
+										</h4>
+										<h4 style="text-decoration: underline;">
+											<t t-if="third_record" t-esc="third_record.companion_name"/>
+										</h4> -->
+									</div>
+								</div>
+							</t>
+							<t t-else="">
+								<t t-set="number" t-value="0"/>
+								<t t-set="first_record" t-value="group_by_records[group_by_record][number] if number &lt; len(group_by_records[group_by_record]) else ''"/>
+								<t t-set="second_number" t-value="number+1"/>
+								<t t-set="second_record" t-value="group_by_records[group_by_record][second_number] if second_number &lt; len(group_by_records[group_by_record]) else ''"/>
+								<t t-set="third_number" t-value="number+2"/>
+								<t t-set="third_record" t-value="group_by_records[group_by_record][third_number] if third_number &lt; len(group_by_records[group_by_record]) else ''"/>
+								<div class="row" style="padding-right: 10px;">
+									<div class="col-4" style="margin: 5px;padding: 0px 0px 5px 0px;border: 1px solid black;" t-if="first_record">
+										<h4 style="margin: 0px;">
+											<div style="width: 100%;border-bottom: 1px solid black;">
+												<t t-esc="first_record['name']"/>
+											</div>
+											<t t-foreach="first_record['records']" t-as="record_1">
+												<div style="width: 100%;border-bottom: 1px solid black;">
+													<t t-esc="record_1.companion_name"/>
+												</div>
+											</t>
+										</h4>
+										<!-- <h4 style="text-decoration: underline;">
+											<t t-if="first_record" t-esc="first_record.companion_name"/>
+										</h4> -->
+									</div>
+									<div class="col-4" style="margin: 5px;padding: 0px 0px 5px 0px;border: 1px solid black;" t-if="second_record">
+										<h4 style="margin: 0px;">
+											<div style="width: 100%;border-bottom: 1px solid black;">
+												<t t-esc="second_record['name']"/>
+											</div>
+											<t t-foreach="second_record['records']" t-as="record_1">
+												<div style="width: 100%;border-bottom: 1px solid black;">
+													<t t-esc="record_1.companion_name"/>
+												</div>
+											</t>
+										</h4>
+										<!-- <h4 style="text-decoration: underline;">
+											<t t-if="second_record" t-esc="second_record.vessel_name"/>
+										</h4>
+										<h4 style="text-decoration: underline;">
+											<t t-if="second_record" t-esc="second_record.companion_name"/>
+										</h4> -->
+									</div>
+									<div class="col-4" style="margin: 5px;padding: 0px 0px 5px 0px;border: 1px solid black;" t-if="third_record">
+										<h4 style="margin: 0px;">
+											<div style="width: 100%;border-bottom: 1px solid black;">
+												<t t-esc="third_record['name']"/>
+											</div>
+											<t t-foreach="third_record['records']" t-as="record_1">
+												<div style="width: 100%;border-bottom: 1px solid black;">
+													<t t-esc="record_1.companion_name"/>
+												</div>
+											</t>
+										</h4>
+										<!-- <h4 style="text-decoration: underline;">
+											<t t-if="third_record" t-esc="third_record.vessel_name"/>
+										</h4>
+										<h4 style="text-decoration: underline;">
+											<t t-if="third_record" t-esc="third_record.companion_name"/>
+										</h4> -->
+									</div>
+								</div>
+							</t>
+							<br/>
+						</div>
+					</t>
+					<!-- <div>
+						<t t-set="done" t-value="False"/>
+						<t t-foreach="range(0,len(group_by_records_list)+1,4)" t-as="number" t-if="len(group_by_records_list) > 4">
+							<t t-set="first_record" t-value="group_by_records_list[number] if number &lt; len(group_by_records_list) else ''"/>
+							<t t-set="second_number" t-value="number+1"/>
+							<t t-set="second_record" t-value="group_by_records_list[second_number] if second_number &lt; len(group_by_records_list) else ''"/>
+							<t t-set="third_number" t-value="number+2"/>
+							<t t-set="third_record" t-value="group_by_records_list[third_number] if third_number &lt; len(group_by_records_list) else ''"/>
+							<t t-set="fourth_record" t-value="number+3"/>
+							<t t-set="fourth_record" t-value="group_by_records_list[fourth_record] if fourth_record &lt; len(group_by_records_list) else ''"/>
+							<div class="row" style="padding-right: 20px;">
+								<div class="col-3" style="margin: 5px;border: 1px solid black;" t-if="first_record">
+									(<t t-esc="first_record['len']"/>) <t t-esc="first_record['name']"/>
+								</div>
+								<div class="col-3" style="margin: 5px;border: 1px solid black;" t-if="second_record">
+									(<t t-esc="second_record['len']"/>) <t t-esc="second_record['name']"/>
+								</div>
+								<div class="col-3" style="margin: 5px;border: 1px solid black;" t-if="third_record">
+									(<t t-esc="third_record['len']"/>) <t t-esc="third_record['name']"/>
+								</div>
+								<div class="col-3" style="margin: 5px;border: 1px solid black;" t-if="fourth_record">
+									(<t t-esc="fourth_record['len']"/>) <t t-esc="fourth_record['name']"/>
+								</div>
+							</div>
+						</t>
+						<t t-elif="not done">
+							<t t-set="number_2" t-value="0"/>
+							<t t-set="first_record" t-value="group_by_records_list[number_2] if number_2 &lt; len(group_by_records_list) else ''"/>
+							<t t-set="second_number" t-value="number_2+1"/>
+							<t t-set="second_record" t-value="group_by_records_list[second_number] if second_number &lt; len(group_by_records_list) else ''"/>
+							<t t-set="third_number" t-value="number_2+2"/>
+							<t t-set="third_record" t-value="group_by_records_list[third_number] if third_number &lt; len(group_by_records_list) else ''"/>
+							<t t-set="fourth_record" t-value="number_2+3"/>
+							<t t-set="fourth_record" t-value="group_by_records_list[fourth_record] if fourth_record &lt; len(group_by_records_list) else ''"/>
+							<div class="row" style="padding-right: 20px;">
+								<div class="col-3" style="margin: 5px;border: 1px solid black;" t-if="first_record">
+									(<t t-esc="first_record['len']"/>) <t t-esc="first_record['name']"/>
+								</div>
+								<div class="col-3" style="margin: 5px;border: 1px solid black;" t-if="second_record">
+									(<t t-esc="second_record['len']"/>) <t t-esc="second_record['name']"/>
+								</div>
+								<div class="col-3" style="margin: 5px;border: 1px solid black;" t-if="third_record">
+									(<t t-esc="third_record['len']"/>) <t t-esc="third_record['name']"/>
+								</div>
+								<div class="col-3" style="margin: 5px;border: 1px solid black;" t-if="fourth_record">
+									(<t t-esc="fourth_record['len']"/>) <t t-esc="fourth_record['name']"/>
+								</div>
+							</div>
+							<t t-set="done" t-value="True"/>
+						</t>
+					</div> -->
+				</div>
+			</t>
+		</t>
+	</template>
+</odoo>

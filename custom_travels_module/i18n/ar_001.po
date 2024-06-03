@@ -1,0 +1,800 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* custom_travels_module
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0-20230109\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-12-24 23:14+0000\n"
+"PO-Revision-Date: 2023-12-24 23:14+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: custom_travels_module
+#: model:ir.model.fields.selection,name:custom_travels_module.selection__price_categories__travel_type__arr
+#: model:ir.model.fields.selection,name:custom_travels_module.selection__travels_data__travel_type__arr
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_visa_body
+msgid "ARR"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_document
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_document
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_visa_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_visa_document
+msgid "ARR OR DEP"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_price_categories__travel_type
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_data__travel_type
+msgid "ARR or DEP"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_price_categories__account_id
+msgid "Account Name"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_price_categories__active_inactive
+msgid "Active/Inactive"
+msgstr ""
+
+#. module: custom_travels_module
+#: code:addons/custom_travels_module/models/travels.py:0
+#: code:addons/custom_travels_module/models/travels.py:0
+#, python-format
+msgid "All Travellers are already invoiced. Thank you!!!"
+msgstr "جميع الرحلات تم فوترتها شكرا"
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_data__amount_total
+msgid "Amount Total"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_price_categories__analytic_account_id
+msgid "Analytic Account"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.actions.server,name:custom_travels_module.action_approve_travel_data
+msgid "Approve Travel"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields.selection,name:custom_travels_module.selection__travels_data__state__approve
+msgid "Approved"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_data__c_o
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_invoicing_report__c_o
+msgid "C.O"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.form_travels_invoicing_report_view
+msgid "Cancel"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_price_categories__categ_no
+msgid "Categ. No."
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.ui.menu,name:custom_travels_module.config_submenu
+msgid "Configuration"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields.selection,name:custom_travels_module.selection__travels_data__state__confirm
+msgid "Confirm"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.actions.server,name:custom_travels_module.action_confirm_travel_data
+msgid "Confirm Travel"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model,name:custom_travels_module.model_res_partner
+msgid "Contact"
+msgstr "جهة الاتصال"
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_document
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_document
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_visa_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_visa_document
+msgid "Count of Persons"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_price_categories__create_uid
+#: model:ir.model.fields,field_description:custom_travels_module.field_service_service__create_uid
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_data__create_uid
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_invoicing_report__create_uid
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_shift__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_price_categories__create_date
+#: model:ir.model.fields,field_description:custom_travels_module.field_service_service__create_date
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_data__create_date
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_invoicing_report__create_date
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_shift__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_res_partner__currency_custody
+#: model:ir.model.fields,field_description:custom_travels_module.field_res_users__currency_custody
+msgid "Currency Custody"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_res_partner__custody_account_id
+#: model:ir.model.fields,field_description:custom_travels_module.field_res_users__custody_account_id
+msgid "Custody Account Name"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields.selection,name:custom_travels_module.selection__price_categories__travel_type__dep
+#: model:ir.model.fields.selection,name:custom_travels_module.selection__travels_data__travel_type__dep
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_visa_body
+msgid "DEP"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_document
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_document
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_visa_document
+msgid "Data Not Found"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_document
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_document
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_visa_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_visa_document
+msgid "Date"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_document
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_visa_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_visa_document
+msgid "Description"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_data__destination
+msgid "Destination"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_price_categories__display_name
+#: model:ir.model.fields,field_description:custom_travels_module.field_service_service__display_name
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_data__display_name
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_invoicing_report__display_name
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_shift__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_invoicing_report__file
+msgid "Download Report"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields.selection,name:custom_travels_module.selection__travels_data__state__draft
+msgid "Draft"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.actions.server,name:custom_travels_module.action_duplicate_travel_data
+msgid "Duplicate"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_document
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_document
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_visa_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_visa_document
+msgid "Flight"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_data__flight_no
+msgid "Flight Number"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_data__flight_time_format
+msgid "Flight Time"
+msgstr ""
+
+#. module: custom_travels_module
+#: code:addons/custom_travels_module/models/travels.py:0
+#: code:addons/custom_travels_module/models/travels.py:0
+#, python-format
+msgid "Found Multiple Co. Please check only similar. Co we can do invoice."
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_invoicing_report__from_date
+msgid "From Date"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_body
+msgid "GROSS TOTAL"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_body
+msgid "Grand Total"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_price_categories__greater_than_number
+msgid "Greater Than"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_price_categories__id
+#: model:ir.model.fields,field_description:custom_travels_module.field_service_service__id
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_data__id
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_invoicing_report__id
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_shift__id
+msgid "ID"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_data__invoice_id
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_invoicing_report__move_id
+#: model:ir.model.fields.selection,name:custom_travels_module.selection__travels_invoicing_report__type__invoice
+msgid "Invoice"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_document
+msgid "Invoice  :"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.form_travels_invoicing_report_view
+msgid "Invoice Print"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields.selection,name:custom_travels_module.selection__travels_data__state__invoice
+msgid "Invoiced"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_service_service__is_default
+msgid "Is Default"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model,name:custom_travels_module.model_account_move
+msgid "Journal Entry"
+msgstr "قيد اليومية"
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_price_categories____last_update
+#: model:ir.model.fields,field_description:custom_travels_module.field_service_service____last_update
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_data____last_update
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_invoicing_report____last_update
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_shift____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_price_categories__write_uid
+#: model:ir.model.fields,field_description:custom_travels_module.field_service_service__write_uid
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_data__write_uid
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_invoicing_report__write_uid
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_shift__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_price_categories__write_date
+#: model:ir.model.fields,field_description:custom_travels_module.field_service_service__write_date
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_data__write_date
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_invoicing_report__write_date
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_shift__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_price_categories__number
+msgid "Less Than"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.actions.server,name:custom_travels_module.action_create_invoice_travel_data
+msgid "Make A Invoices"
+msgstr "انشاء فاتورة"
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_service_service__name
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_shift__name
+msgid "Name"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_data__vessel_name
+msgid "Name Of Person"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_document
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_document
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_visa_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_visa_document
+msgid "Name of Person"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_res_partner__nationality
+#: model:ir.model.fields,field_description:custom_travels_module.field_res_users__nationality
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_data__vessel_nationality
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_document
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_body
+msgid "Nationality"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_data__notes
+msgid "Notes"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_data__shift_3
+msgid "Office"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_visa_body
+msgid "Opening Balance"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields.selection,name:custom_travels_module.selection__travels_invoicing_report__type__pcr
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_body
+msgid "PCR"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_document
+msgid "PCR :"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.form_travels_invoicing_report_view
+msgid "PCR Print"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_body
+msgid "PCR Report :"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_body
+msgid "Page :"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_price_categories__partner_id
+#: model:ir.model.fields,field_description:custom_travels_module.field_service_service__partner_id
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_shift__partner_id
+msgid "Partner"
+msgstr ""
+
+#. module: custom_travels_module
+#: code:addons/custom_travels_module/wizard/invoicing_report.py:0
+#: code:addons/custom_travels_module/wizard/invoicing_report.py:0
+#, python-format
+msgid "Please, check and select C.O for visa reports"
+msgstr ""
+
+#. module: custom_travels_module
+#: code:addons/custom_travels_module/models/travels.py:0
+#: code:addons/custom_travels_module/models/travels.py:0
+#, python-format
+msgid "Please, check some Travellers are confirmed and invoiced."
+msgstr "الرجاء المراجعة بعض الرحلات تم تاكيدها وفوترتها"
+
+#. module: custom_travels_module
+#: code:addons/custom_travels_module/models/travels.py:0
+#: code:addons/custom_travels_module/models/travels.py:0
+#, python-format
+msgid "Please, check some Travellers are draft and invoiced."
+msgstr ""
+
+#. module: custom_travels_module
+#: code:addons/custom_travels_module/models/travels.py:0
+#: code:addons/custom_travels_module/models/travels.py:0
+#, python-format
+msgid ""
+"Please, check some Travellers are not confirmed. without confirmation we "
+"can't do invoiced!!!"
+msgstr ""
+
+#. module: custom_travels_module
+#: code:addons/custom_travels_module/models/travels.py:0
+#: code:addons/custom_travels_module/models/travels.py:0
+#: code:addons/custom_travels_module/models/travels.py:0
+#: code:addons/custom_travels_module/models/travels.py:0
+#, python-format
+msgid ""
+"Please, check this service for customer. because of in we haven't find out. "
+"' {name} ' "
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_data__price
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_document
+msgid "Price"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model,name:custom_travels_module.model_price_categories
+#: model:ir.model.fields,field_description:custom_travels_module.field_res_partner__price_categories_line
+#: model:ir.model.fields,field_description:custom_travels_module.field_res_users__price_categories_line
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.base_view_partner_form_inherit
+msgid "Price Categories"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_data__pcr
+msgid "Quantity"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.ui.menu,name:custom_travels_module.travels_report_submenu
+msgid "Reports"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.actions.act_window,name:custom_travels_module.action_service_service
+#: model:ir.ui.menu,name:custom_travels_module.service_submenu
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.tree_service_service_view
+msgid "Service"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_price_categories__service_id
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_data__service_id
+msgid "Service Name"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model,name:custom_travels_module.model_service_service
+msgid "Service Service"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_data__shift_1
+msgid "Shift 1"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_data__shift_2
+msgid "Shift 2"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_account_bank_statement_line__shift_to_hotel
+#: model:ir.model.fields,field_description:custom_travels_module.field_account_move__shift_to_hotel
+#: model:ir.model.fields,field_description:custom_travels_module.field_account_payment__shift_to_hotel
+msgid "Shift To Hotel"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_account_bank_statement_line__shift_to_port
+#: model:ir.model.fields,field_description:custom_travels_module.field_account_move__shift_to_port
+#: model:ir.model.fields,field_description:custom_travels_module.field_account_payment__shift_to_port
+msgid "Shift To Port"
+msgstr ""
+
+#. module: custom_travels_module
+#: code:addons/custom_travels_module/models/partner.py:0
+#: code:addons/custom_travels_module/models/partner.py:0
+#, python-format
+msgid ""
+"Sorry !! You can't not create same line.\n"
+" Please check your all line."
+msgstr ""
+
+#. module: custom_travels_module
+#: code:addons/custom_travels_module/models/travels.py:0
+#: code:addons/custom_travels_module/models/travels.py:0
+#, python-format
+msgid "Sorry !! You have to enter quantity from {} to {}."
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_price_categories__country_ids
+msgid "Special Nationalities"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_price_categories__special_price
+msgid "Special Price"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_price_categories__price
+msgid "Standard Price"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_data__state
+msgid "Status"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_data__sub_total
+msgid "Sub Total"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_body
+msgid "Subtotal"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_body
+msgid "Tax ID :"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_data__tax_amount
+msgid "Tax Total"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_data__tax_id
+msgid "Taxes"
+msgstr ""
+
+#. module: custom_travels_module
+#: code:addons/custom_travels_module/models/config.py:0
+#: code:addons/custom_travels_module/models/config.py:0
+#, python-format
+msgid "This Name is already exist !!!"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_document
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_visa_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_visa_document
+msgid "To"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_invoicing_report__to_date
+msgid "To Date"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_document
+msgid "Total"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_body
+msgid "Total Additional Items"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_body
+msgid "Total Meet &amp; Assist"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_data__travel_date
+msgid "Travel Date"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.actions.act_window,name:custom_travels_module.travellers_data_action
+#: model:ir.model.fields,field_description:custom_travels_module.field_account_bank_statement_line__travellers
+#: model:ir.model.fields,field_description:custom_travels_module.field_account_move__travellers
+#: model:ir.model.fields,field_description:custom_travels_module.field_account_payment__travellers
+#: model:ir.ui.menu,name:custom_travels_module.travels_data_menu
+#: model:ir.ui.menu,name:custom_travels_module.travels_data_submenu
+msgid "Travellers"
+msgstr "كشف الرحلات"
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_account_bank_statement_line__travels_id
+#: model:ir.model.fields,field_description:custom_travels_module.field_account_move__travels_id
+#: model:ir.model.fields,field_description:custom_travels_module.field_account_payment__travels_id
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.travels_data_tree
+msgid "Travellers Data"
+msgstr "بيانات الرحلات"
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_data__travellers_number
+msgid "Travellers Number"
+msgstr "عدد الرحلات"
+
+#. module: custom_travels_module
+#: model:ir.actions.report,name:custom_travels_module.traveling_report_menu
+msgid "Travels Invoice Report"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.form_travels_invoicing_report_view
+msgid "Travels Invoicing Report"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.actions.report,name:custom_travels_module.traveling_pcr_report_menu
+msgid "Travels PCR Report"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.actions.act_window,name:custom_travels_module.action_travels_invoicing_report_wizard
+#: model:ir.ui.menu,name:custom_travels_module.menu_travels_invoicing_xlsx_report
+msgid "Travels Report"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.actions.report,name:custom_travels_module.traveling_visa_report_menu
+msgid "Travels Visa Report"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_invoicing_report__type
+msgid "Type"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_body
+msgid "VAT"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_body
+msgid "VAT :"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_res_partner__vat_no
+#: model:ir.model.fields,field_description:custom_travels_module.field_res_users__vat_no
+msgid "VAT No."
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_body
+msgid "Vat(%)"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_document
+msgid "Vessel"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields,field_description:custom_travels_module.field_travels_data__vessel_id
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_document
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_visa_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_visa_document
+msgid "Vessel Name"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model.fields.selection,name:custom_travels_module.selection__travels_invoicing_report__type__visa
+msgid "Visa"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_visa_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_visa_document
+msgid "Visa :"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.form_travels_invoicing_report_view
+msgid "Visa Print"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model,name:custom_travels_module.model_report_custom_travels_module_report_world_agency
+msgid "report world agency Invoice"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model,name:custom_travels_module.model_report_custom_travels_module_report_world_agency_pcr
+msgid "report world agency pcr"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model,name:custom_travels_module.model_report_custom_travels_module_report_world_agency_visa
+msgid "report_world_agency_visa"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model,name:custom_travels_module.model_travels_invoicing_report
+msgid "travels invoicing Report"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model,name:custom_travels_module.model_travels_data
+msgid "travels.data"
+msgstr ""
+
+#. module: custom_travels_module
+#: model:ir.model,name:custom_travels_module.model_travels_shift
+msgid "travels.shift"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_document
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_document
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_visa_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_visa_document
+msgid "حركة التأشيرات"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_document
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_visa_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_visa_document
+msgid "رصيد"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_document
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_visa_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_visa_document
+msgid "منصرف"
+msgstr ""
+
+#. module: custom_travels_module
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_pcr_document
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_visa_body
+#: model_terms:ir.ui.view,arch_db:custom_travels_module.report_world_agency_visa_document
+msgid "وارد"
+msgstr ""

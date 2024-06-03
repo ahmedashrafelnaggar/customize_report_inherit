@@ -1,0 +1,203 @@
+<odoo>
+
+	<record id="view_travels_data_filter" model="ir.ui.view">
+		<field name="name">travels.data.search</field>
+		<field name="model">travels.data</field>
+		<field name="arch" type="xml">
+			<search string="Travels Data">
+				<field name="ticket_number"/>
+				<field name="room_type_id"/>
+			</search>
+		</field>
+	</record>
+	
+	<!-- Tree View For Travels Data -->
+	<record id="travels_data_tree" model="ir.ui.view">
+		<field name="name">travels data tree</field>
+		<field name="model">travels.data</field>
+		<field name="arch" type="xml">
+			<tree string="Travellers Data" decoration-success="state == 'confirm'"
+					decoration-primary="state == 'invoice'" decoration-bf="state == 'approve'" default_order="flight_time_format asec">
+				<!--field name="vessel_id" optional="show" attrs="{'readonly':[('state','!=','draft')]}"/-->
+				<field name="ticket_number"/>
+				<field name="customer_id"/>
+				<field name="vessel_name" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+				<field name="companion_name" required="0" attrs="{'readonly':[('state','!=','draft')]}"/>
+				<field name="notes"/>
+				<field name="c_o" optional="show" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+				<field name="vessel_nationality" optional="show" required="0" attrs="{'readonly':[('state','!=','draft')]}"/>
+				<!--field name="travellers_number" optional="show" required="0" attrs="{'readonly':[('state','!=','draft')]}"/-->
+				<field name="service_id" optional="show" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+				<field name="shift_1" optional="show" attrs="{'readonly':[('state','!=','draft')]}"/>
+				<field name="destination" optional="show" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+				<!--field name="flight_no" optional="show" required="1" attrs="{'readonly':[('state','!=','draft')]}"/-->
+				<!--field name="flight_time_format" widget="float_time" optional="show" attrs="{'readonly':[('state','!=','draft')]}"/-->
+				<field name="travel_date" optional="show" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+				<field name="travel_date_hijri_str" optional="show" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+				<!-- <field name="hjrj_y_from" optional="show" required="1" attrs="{'readonly':[('state','!=','draft')]}"/> -->
+				<!-- <field name="hjrj_m_from" optional="show" required="1" attrs="{'readonly':[('state','!=','draft')]}"/> -->
+				<!-- <field name="hjrj_d_from" optional="show" required="1" attrs="{'readonly':[('state','!=','draft')]}"/> -->
+				<field name="return_date" optional="show" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+				<field name="return_date_hijri_str" optional="show" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+				<!-- <field name="hjrj_y_to" optional="show" required="1" attrs="{'readonly':[('state','!=','draft')]}"/> -->
+				<!-- <field name="hjrj_m_to" optional="show" required="1" attrs="{'readonly':[('state','!=','draft')]}"/> -->
+				<!-- <field name="hjrj_d_to" optional="show" required="1" attrs="{'readonly':[('state','!=','draft')]}"/> -->
+				<!--field name="travel_type" optional="show" attrs="{'readonly':[('state','!=','draft')]}" required="0"/-->
+				<field name="pcr" optional="show" required="1" attrs="{'readonly':[('state','!=','draft')]}" force_save="1"/>
+				<field name="price" optional="show" readonly="0" force_save="1"/>
+				<field name="sub_total" optional="hide"/>
+				<field name="tax_id" optional="show" attrs="{'readonly':[('state','!=','draft')]}"/>
+				<field name="tax_amount" optional="show"/>
+				<field name="amount_total" optional="show"/>
+				<!--field name="shift_2" optional="hide" attrs="{'readonly':[('state','!=','draft')]}"/-->
+				<!--field name="shift_3" optional="hide" attrs="{'readonly':[('state','!=','draft')]}"/-->
+				<field name="state" widget="badge" optional="show" attrs="{'readonly':[('state','!=','draft')]}"/>
+				<field name="invoice_id" invisible="1" readonly="1"/>
+				<field name="branch_id" optional="show"/>
+			</tree>
+		</field>
+	</record>
+
+	<record id="travels_data_form" model="ir.ui.view">
+		<field name="name">travels.data.form</field>
+		<field name="model">travels.data</field>
+		<field name="arch" type="xml">
+			<form>
+				<header>
+					<field name="state" widget="statusbar" statusbar_visible="draft,invoice"/>
+				</header>
+				<sheet>
+
+					<div name="button_box" class="oe_button_box">
+						<button name="open_travel_invoice" class="oe_stat_button" icon="fa-bars" type="object" 
+						attrs="{'invisible':['|',('invoice_id','=',False),('state','!=','invoice')]}" string="Invoices">
+							<field name="invoice_id" invisible="1" />
+						</button>
+					</div>   
+					<group>
+						<group>
+							<field name="ticket_number" readonly="1"/>
+							<field name="vessel_name" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+							<field name="c_o" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+							<field name="shift_1" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+							<field name="travel_date" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+							<field name="return_date" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+							<field name="pcr" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+							<field name="tax_id" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+							<field name="tax_amount" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+							<field name="notes" attrs="{'readonly':[('state','!=','draft')]}"/>
+							<field name="mobile_no" required="1"/>
+							<field name="customer_id" required="1"/>
+							<field name="vessel_nationality" required="1"/>
+						</group>
+						<group>
+							<field name="is_branch_manager" invisible="1"/>
+							<!-- <field name="branch_id" attrs="{'readonly':[('is_branch_manager','=',False)]}"/> -->
+							<field name="branch_id"/>
+							<field name="companion_name" required="0" attrs="{'readonly':[('state','!=','draft')]}"/>
+							<field name="service_id" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+							<field name="destination" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+							<field name="travel_date_hijri_str" readonly="1"/>
+							<field name="return_date_hijri_str" readonly="1"/>
+							<!-- <label for="travel_date" string="Travel Date(Hijri)"/>
+							<div class="o_row">
+								<field name="hjrj_y_from" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+								<field name="hjrj_m_from" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+								<field name="hjrj_d_from" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+							</div>
+							<label for="return_date" string="Return Date(Hijri)"/>
+							<div class="o_row">
+								<field name="hjrj_y_to" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+								<field name="hjrj_m_to" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+								<field name="hjrj_d_to" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+							</div> -->
+							<field name="price" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+							<field name="sub_total" />
+							<field name="amount_total" required="1" attrs="{'readonly':[('state','!=','draft')]}"/>
+							<field name="ticket_date"/>
+							<field name="room_type_id" required="1"/>
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+	
+	<!-- Action For Travels Data -->
+	<record id="travellers_data_action" model="ir.actions.act_window">
+		<field name="name">Travellers</field>
+		<field name="type">ir.actions.act_window</field>
+		<field name="res_model">travels.data</field>
+		<field name="view_mode">tree,form</field>
+	</record>
+
+	<!-- This Menu Item must have a parent and an action -->
+	<menuitem id="travels_data_menu" name="Travellers" sequence="-1"/>
+	<menuitem id="travels_data_submenu" name="Travellers" parent="travels_data_menu" action="travellers_data_action" sequence="1"/>
+	<menuitem id="travels_report_submenu" name="Reports" parent="travels_data_menu" sequence="2"/>
+	<menuitem id="config_submenu" name="Configuration" parent="travels_data_menu" sequence="3"/>
+	
+	<!-- menuitem -->
+	<menuitem id="menu_travels_invoicing_xlsx_report" 
+		action="action_travels_invoicing_report_wizard" 
+		parent="custom_travels_module.travels_report_submenu"/>
+
+	<!-- menuitem -->
+	<menuitem id="menu_room_group" 
+		action="action_room_group_wizard" 
+		parent="custom_travels_module.travels_report_submenu"/>
+
+	<!-- menuitem -->
+	<menuitem id="menu_travels_report" 
+		action="action_travels_report_wizard" 
+		parent="custom_travels_module.travels_report_submenu"/>
+
+	<!-- menuitem -->
+	<menuitem id="menu_ticket_report" 
+		action="action_ticket_report_wizard" 
+		parent="custom_travels_module.travels_report_submenu"/>
+
+	<!-- Action Server For Approved Travel -->
+	<!-- <record id="action_approve_travel_data" model="ir.actions.server">
+		<field name="name">Approve Travel</field>
+		<field name="model_id" ref="custom_travels_module.model_travels_data"/>
+		<field name="binding_model_id" ref="custom_travels_module.model_travels_data"/>
+		<field name="binding_view_types">list</field>
+		<field name="state">code</field>
+		<field name="code">action = records.approve_action()</field>
+	</record> -->
+	
+	<!-- Action Server For Confirm Travel -->
+	<!-- <record id="action_confirm_travel_data" model="ir.actions.server">
+		<field name="name">Confirm Travel</field>
+		<field name="model_id" ref="custom_travels_module.model_travels_data"/>
+		<field name="binding_model_id" ref="custom_travels_module.model_travels_data"/>
+		<field name="binding_view_types">list</field>
+		<field name="state">code</field>
+		<field name="code">action = records.confirm_action()</field>
+	</record> -->
+
+
+	<!-- Action Server For Create Invoice -->
+	<record id="action_create_invoice_travel_data" model="ir.actions.server">
+		<field name="name">Make A Invoices</field>
+		<field name="model_id" ref="custom_travels_module.model_travels_data"/>
+		<field name="binding_model_id" ref="custom_travels_module.model_travels_data"/>
+		<field name="binding_view_types">list,form</field>
+		<field name="state">code</field>
+		<field name="code">action = records.action_create_invoice()</field>
+	</record>
+
+
+	<!-- Action Server For Duplicate -->
+	<record id="action_duplicate_travel_data" model="ir.actions.server">
+		<field name="name">Duplicate</field>
+		<field name="model_id" ref="custom_travels_module.model_travels_data"/>
+		<field name="binding_model_id" ref="custom_travels_module.model_travels_data"/>
+		<field name="binding_view_types">list</field>
+		<field name="state">code</field>
+		<field name="code">action = records.action_duplicate()</field>
+	</record>
+
+</odoo>

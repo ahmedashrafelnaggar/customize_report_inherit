@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<template id="report_travel_template_header">
+		<t t-if="not o" t-set="o" t-value="doc"/>
+		<t t-if="not company">
+			<t t-if="company_id">
+				<t t-set="company" t-value="company_id"/>
+			</t>
+			<t t-elif="o and 'company_id' in o">
+				<t t-set="company" t-value="o.company_id.sudo()"/>
+			</t>
+			<t t-else="else">
+				<t t-set="company" t-value="res_company"/>
+			</t>
+		</t>
+
+		<div class="header">
+			<div class="row">
+				<div class="col-6">
+					<!-- <img t-if="o.einv_sa_qr_code_str" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s'%('QR', o.einv_sa_qr_code_str, 150, 150)" style="float: left;margin: 0px !important;"/> -->
+				</div>
+				<div class="col-6">
+					<!-- <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 65px;" alt="Logo"/> -->
+				</div>
+			</div>
+		</div>
+
+		<div class="footer">
+		</div>
+
+		<div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
+			 t-att-data-oe-lang="o and 'en_US'">
+			 <!-- t-att-data-oe-lang="o and o.env.context.get('lang')"> -->
+			<t t-raw="0"/>
+		</div>
+
+	</template>
+	<template id="report_travel_template">
+		<t t-call="web.html_container">
+			<t t-foreach="tickiet_name_list" t-as="tickiet_name">
+				<t t-set="o" t-value="get_record_from_number(tickiet_name)"/>
+				<t t-call="custom_travels_module.report_travel_template_header">
+					<div class="page" style="font-size: 11px;">
+						<br/>
+						<style>
+
+							table {
+							font-size: 11px;
+							border-collapse: collapse;
+							width: 100%;
+							border: 1px solid #b3adad;
+							padding:5px;
+							}
+							table th {
+							font-size: 10px;
+							text-align:center;
+							border: 1px solid #b3adad;
+							padding:5px;
+							background:#f0f0f0;
+							color:#313030;
+							}
+
+							table td{
+							border: 1px solid #b3adad;
+							text-align:center;
+							padding:5px;
+							background:#ffffff;
+							color:#313030;
+							}
+
+
+						</style>
+
+						<div style=" font-size:2em;">
+							<h1 style="  font-family: IBMPlexSansArabic; display:inline_block; justify-content:center; text-align: center; font-size:2em; font-weight:bold;"
+								class="m-0" t-field="o.companion_name"/>
+
+							<h3 style="display:inline_block; justify-content:center;text-align: center;"
+								t-field="o.vessel_name"/>
+
+							<h5 style="display:inline_block; justify-content:center;text-align: center; padding-bottom:1.2em;"
+								t-field="o.mobile_no"/>
+						</div>
+
+						<div class="row">
+							<div class="col-6">
+								<img t-if="o.einv_sa_qr_code_str"
+									 t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s'%('QR', o.einv_sa_qr_code_str, 120, 120)"
+									 style="float: left;margin: 0px !important; padding:10px;"/>
+							</div>
+							<div class="col-3">
+								<h3>
+<!--									<t t-esc="o.env.company.name"/>-->
+								</h3>
+							</div>
+							<div class="col-3">
+								<img t-if="o.env.company.logo" t-att-src="image_data_uri(o.env.company.logo)"
+									 style="height: 120px;" alt="Logo"/>
+							</div>
+						</div>
+						<table class="table table-borderless" style="margin-right: 10px;font-size: 10px;">
+							<tr>
+								<th></th>
+								<th></th>
+								<th></th>
+								<th style="text-align: right;" colspan="4">
+									<t t-if="o.service_id" t-esc="o.service_id.name"/>
+								</th>
+								<th style="text-align: left;white-space: nowrap;">: الرحلة</th>
+							</tr>
+							<tr>
+								<th></th>
+								<th></th>
+								<th></th>
+								<th></th>
+								<th style="text-align: right;" colspan="3">
+									<t t-if="o.shift_1" t-esc="o.shift_1.name"/>
+								</th>
+								<th style="text-align: left;">: البرنامج</th>
+							</tr>
+							<tr>
+								<th></th>
+								<th></th>
+								<th></th>
+								<th></th>
+								<th style="text-align: right;" colspan="3">
+									<t t-if="o.destination" t-esc="o.destination.name"/>
+								</th>
+								<th style="text-align: left;">: وجهة</th>
+							</tr>
+							<tr style="white-space: nowrap;background-color: yellow;">
+								<th style="text-align: right;">
+									<t t-esc="o.ticket_number"/>
+								</th>
+								<th style="text-align: left;">: رقم التذكرة</th>
+								<th style="text-align: right;">
+									<t t-if="o.travel_date" t-esc="o.travel_date.strftime('%A')"/>
+								</th>
+								<th style="text-align: left;">: يوم الأسبوع من</th>
+								<th style="text-align: right;">
+									<t t-esc="o.hjrj_y_from"/>
+									/
+									<t t-esc="o.hjrj_m_from"/>
+									/
+									<t t-esc="o.hjrj_d_from"/>
+								</th>
+								<th style="text-align: left;">: السفر الهجري</th>
+								<th style="text-align: right;">
+									<t t-if="o.travel_date" t-esc="o.travel_date"/>
+								</th>
+								<th style="text-align: left;">: تاريخ السفر</th>
+							</tr>
+							<tr style="white-space: nowrap;background-color: yellow;">
+								<th style="text-align: right;">
+									<t t-esc="o.ticket_date"/>
+								</th>
+								<th style="text-align: left;">: تاريخ التذكرة</th>
+								<th style="text-align: right;">
+									<t t-if="o.return_date" t-esc="o.return_date.strftime('%A')"/>
+								</th>
+								<th style="text-align: left;">: يوم الأسبوع إلى</th>
+								<th style="text-align: right;">
+									<t t-esc="o.hjrj_y_from"/>
+									/
+									<t t-esc="o.hjrj_m_from"/>
+									/
+									<t t-esc="o.hjrj_d_from"/>
+								</th>
+								<th style="text-align: left;">: العودة الهجرية</th>
+								<th style="text-align: right;">
+									<t t-esc="o.hjrj_y_to"/>
+									/
+									<t t-esc="o.hjrj_m_to"/>
+									/
+									<t t-esc="o.hjrj_d_to"/>
+								</th>
+								<th style="text-align: left;">: تاريخ العودة</th>
+							</tr>
+						</table>
+						<br/>
+						<t t-set="sl_no" t-value="1"/>
+						<table class="table" style="text-align: center;">
+							<tr>
+								<th style="background-color: #3c3c3c;color:white; border: 1px solid black;">ملحوظة</th>
+								<th style="background-color: #3c3c3c;color:white; border: 1px solid black;">سعر</th>
+								<th style="background-color: #3c3c3c;color:white; border: 1px solid black;">جوال</th>
+								<th style="background-color: #3c3c3c;color:white; border: 1px solid black;">عميل</th>
+								<th style="background-color: #3c3c3c;color:white; border: 1px solid black;">جنسية</th>
+								<th style="background-color: #3c3c3c; color:white;border: 1px solid black;">اسم الراكب
+								</th>
+								<th style="background-color: #3c3c3c; color:white;border: 1px solid black;">مسلسل</th>
+							</tr>
+							<t t-foreach="get_line_from_number(tickiet_name)" t-as="line">
+								<tr>
+									<td style="border: 1px solid black;">
+										<t t-esc="line.notes"/>
+									</td>
+									<td style="border: 1px solid black;">
+										<t t-if="line.price" t-esc="line.price"/>
+									</td>
+									<td style="border: 1px solid black;">
+										<t t-esc="line.mobile_no"/>
+									</td>
+									<td style="border: 1px solid black;">
+										<t t-esc="line.customer_id"/>
+									</td>
+									<td style="border: 1px solid black;">
+										<t t-if="line.vessel_nationality" t-esc="line.vessel_nationality.name"/>
+									</td>
+									<td style="border: 1px solid black;">
+										<t t-esc="line.vessel_name"/>
+									</td>
+									<td style="border: 1px solid black;">
+										<t t-esc="sl_no"/>
+										<t t-set="sl_no" t-value="sl_no + 1"/>
+									</td>
+								</tr>
+							</t>
+							<tr>
+								<th colspan="7">
+									<br/>
+								</th>
+							</tr>
+							<!-- <tr>
+								<th colspan="4"></th>
+								<th style="text-align: right;">
+									1
+								</th>
+								<th colspan="2" style="text-align: right;">خطوط العد</th>
+							</tr>
+							<tr>
+								<th colspan="4"></th>
+								<th style="text-align: right;">
+									<t t-esc="o.amount_total"/>
+								</th>
+								<th colspan="2" style="text-align: right;">السعر الكلي</th>
+							</tr>
+							<tr>
+								<th colspan="4"></th>
+								<th style="text-align: right;">
+									<t t-esc="o.tax_amount"/>
+								</th>
+								<th colspan="2" style="text-align: right;">قيمة الضريبة</th>
+							</tr> -->
+						</table>
+						<div class="row" style="page-break-inside: avoid;">
+							<div class="col-6">
+								<!-- <img t-if="o.einv_sa_qr_code_str" t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s'%('QR', o.einv_sa_qr_code_str, 150, 150)" style="float: left;margin: 0px !important;"/> -->
+							</div>
+							<div class="col-6" style="font-size:15px;">
+								<div class="row">
+									<div class="col-6" style="text-align: right;">
+										<t t-set="sl_no" t-value="sl_no - 1"/>
+										<t t-esc="sl_no"/>
+									</div>
+									<div class="col-6" style="text-align: right;">
+										<b>اجمالى العد</b>
+									</div>
+								</div>
+								<br/>
+								<div class="row">
+									<div class="col-6" style="text-align: right;">
+										<t t-esc="sum(get_line_from_number(tickiet_name).mapped('amount_total'))"/>
+									</div>
+									<div class="col-6" style="text-align: right;">
+										<b>السعر الكلي</b>
+									</div>
+								</div>
+								<br/>
+								<div class="row">
+									<div class="col-6" style="text-align: right;">
+										<t t-esc="sum(get_line_from_number(tickiet_name).mapped('tax_amount'))"/>
+									</div>
+									<div class="col-6" style="text-align: right;">
+										<b>قيمة الضريبة</b>
+									</div>
+								</div>
+							</div>
+						</div>
+						<br/>
+						<br/>
+						<div class="row" style="font-weight: bold;">
+							<div class="col-6" style="text-align: right;">
+								<p style="text-align: right;">* المقاعد الامامية للعوائل والخلفية للعزاب</p>
+								<p style="text-align: right;">* تلتزم الشركة بتعویض العمیل عن أي خلل في الرحلة بما لا
+									یتعدى القیمة المدفوعة لھذه الجزئیة
+								</p>
+								<p style="text-align: right;">* لايسمح للعميل بالتنازل عن التذكرة لشخض اخر</p>
+								<p style="text-align: right;">* لا یسمح للعمیل بمصاحبة اطفالھ بدون حجز مقاعد لھم</p>
+								<p style="text-align: right;">* يحق للشركة عدم انتظار العميل فى حال تاخره عن الحضور</p>
+								<p style="text-align: right;">* يلتزم العميل بالحضور قبل موعد المغادرة بساعة</p>
+								<p style="text-align: right;">* يلتزم العميل بالحفاظ على الاداب العامة</p>
+							</div>
+							<div class="col-6" style="text-align: right;">
+								<p style="text-align: right;">* یلتزم العمیل بحق الشركة في عزله عن الرحلة حال مخالفته
+									لتعلیمات الرحلة
+								</p>
+								<p style="text-align: right;">* یلتزم العمیل بخطة ومواعيد برنامج الرحلة</p>
+								<p style="text-align: right;">* یلتزم العمیل بعدم الاعتراض على اى بند من برنامج الرحلة
+								</p>
+								<p style="text-align: right;">* یلتزم العمیل بعدم التدخین في جمیع مراحل الرحلة</p>
+								<p style="text-align: right;">* یلتزم العمیل بعدم مطالبة الشركة بأي تعویض حال تخلفه عن
+									الرحلة
+								</p>
+								<p style="text-align: right;">* یلتزم العمیل بعدم مطالبة الشركة بتعویضھ عن أغراضه
+									المفقودة
+								</p>
+								<p style="text-align: right;">* یلتزم العمیل بمقر العودة المحدد حال رغبته فى سكن خارجى
+								</p>
+							</div>
+						</div>
+					</div>
+					<!-- <br/>
+					<br/>
+					<br/>
+					<div style="width: 100%;text-align: right;"> -->
+					<!--
+                        *************************
+                        *						*
+                        *	Add Your Code Here  *
+                        *						*
+                        *************************
+                     -->
+					<!-- </div> -->
+				</t>
+			</t>
+		</t>
+	</template>
+</odoo>
