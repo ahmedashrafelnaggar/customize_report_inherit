@@ -1,0 +1,44 @@
+<odoo>
+
+    <!-- Add New Fiels in Account View -->
+    <record id="view_move_form_line_inherit" model="ir.ui.view">
+        <field name="name">account.move.form.inherit</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <!-- 			<xpath expr="//field[@name='payment_reference']" position="after">
+                            <field name="travels_id"/>
+                            <field name="shift_to_hotel"/>
+                            <field name="shift_to_port"/>
+                        </xpath> -->
+            <!--			<xpath expr="//field[@name='po_number']" position="replace">-->
+            <!--				<field name="po_number"/>-->
+            <!--			</xpath>-->
+
+            <field name="payment_reference" position="after">
+                <field name="po_number" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+            </field>
+<!--            <field name="account_id" position="after">-->
+<!--                <field name="line_number"/>-->
+<!--            </field>-->
+            <xpath expr="//field[@name='invoice_line_ids']/tree/field[@name='product_id']" position="before">
+                <field name="line_number" invisable="1"/>
+            </xpath>
+        </field>
+    </record>
+<!--    <template id="account_move_inherit_template" inherit_id="account.report_invoice_with_payments">-->
+<!--        <xpath expr="//div[@class='page']//div[last()]" position="inside">-->
+<!--            <style>-->
+<!--                body {-->
+<!--                direction: rtl;-->
+<!--                }-->
+<!--                h1 {-->
+<!--                text-align: right;-->
+<!--                }-->
+<!--                p {-->
+<!--                text-align: right;-->
+<!--                }-->
+<!--            </style>-->
+<!--        </xpath>-->
+<!--    </template>-->
+</odoo>
